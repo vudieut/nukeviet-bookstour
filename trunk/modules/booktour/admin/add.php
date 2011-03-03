@@ -14,7 +14,7 @@ $page_title = $lang_module['tour_add'];
 $contents = "";
 $error = "";
 $data = array();
-
+// truyen du lieu tu forum
 $data['title'] = filter_text_input( 'title', 'post', '' );
 $data['times'] = filter_text_input( 'times', 'post', '' );
 $data['by'] = filter_text_input( 'by', 'post', '' );
@@ -23,7 +23,7 @@ $data['img'] = $nv_Request->get_string( 'img', 'post', '' );
 $data['imgthumb'] = $nv_Request->get_string( 'imgthumb', 'post', '' );
 $data['hometext'] = $nv_Request->get_string( 'hometext', 'post', '' );
 $data['bodytext'] = $nv_Request->get_string( 'bodytext', 'post', '');
-
+// kiem tra du lieu co dc nhap vao hay kong
 if ( ($nv_Request->get_int( 'add', 'post', 0 ) == 1) )
 {
    if ( $data['title'] == "" )
@@ -76,7 +76,7 @@ if ( ($nv_Request->get_int( 'add', 'post', 0 ) == 1) )
    
    }
 }
-
+// xuat thong bao loi
 if( $error )
 {
    $contents .= "<div class=\"quote\" style=\"width: 780px;\">\n
@@ -87,6 +87,8 @@ if( $error )
             <div class=\"clear\">
             </div>";
 }
+
+//noi dung html
 $contents .="
 <form method=\"post\">
    <table class=\"tab1\">
@@ -164,8 +166,22 @@ $contents .="
             <td>
             Nội Dung
             </td>
-            <td>
-               <textarea name=\"bodytext\" style=\"width: 635px; height: 114px\">" . $data['bodytext'] . "</textarea>
+   
+   <td>";
+   // add trinh soan thao van ban
+if ( defined( 'NV_EDITOR' ) )
+{
+    require_once ( NV_ROOTDIR . '/' . NV_EDITORSDIR . '/' . NV_EDITOR . '/nv.php' );
+}
+    if ( defined( 'NV_EDITOR' ) and function_exists( 'nv_aleditor' ) )
+        {
+           $contents .= nv_aleditor( 'bodytext', '680px', '250px', $data['bodytext'] );
+        }
+        else
+        {
+         $contents .= "<textarea style=\"width: 680px\"  name=\"bodytext\" id=\"bodytext\" cols=\"20\" rows=\"15\"></textarea>\n";
+        }
+$contents.="           
             </td>
          </tr>
       </tbody>
@@ -177,6 +193,16 @@ $contents .="
          </tr>\n
    </table>\n
 </form>\n";
+$contents.="
+<script type=\"text/javascript\">         
+            $(\"input[name=selectimg]\").click(function()
+            {
+               var area = \"img\"; // return value area
+               var path = \"".NV_UPLOADS_DIR . "/" . $module_name."\";
+               nv_open_browse_file(\"".NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=upload&popup=1&area=" + area+"&path="+path, "NVImg", "850", "500","resizable=no,scrollbars=no,toolbar=no,location=no,status=no'."\");
+               return false;
+            });
+            </script>";
 include ( NV_ROOTDIR . "/includes/header.php" );
 echo nv_admin_theme( $contents );
 include ( NV_ROOTDIR . "/includes/footer.php" );
