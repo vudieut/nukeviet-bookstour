@@ -9,7 +9,7 @@
 
 if ( ! defined( 'NV_IS_BOOKTOUR_ADMIN' ) ) die( 'Stop!!!' );
 
-$page_title = $module_info['test content'];
+$page_title = $lang_module['tour_list'];
 $contents = "";
 $contents.= "test noi dugn";
 include ( NV_ROOTDIR . "/includes/header.php" );
