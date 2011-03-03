@@ -179,7 +179,7 @@ if ( defined( 'NV_EDITOR' ) )
         }
         else
         {
-         $contents .= "<textarea style=\"width: 680px\"  name=\"bodytext\" id=\"bodytext\" cols=\"20\" rows=\"15\"></textarea>\n";
+         $contents .= "<textarea style=\"width: 680px\"  name=\"bodytext\" id=\"describe\" cols=\"20\" rows=\"15\"></textarea>\n";
         }
 $contents.="           
             </td>
