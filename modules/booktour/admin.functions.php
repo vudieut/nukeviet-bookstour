@@ -9,6 +9,10 @@
 if ( ! defined( 'NV_ADMIN' ) or ! defined( 'NV_MAINFILE' ) or ! defined( 'NV_IS_MODADMIN' ) ) die( 'Stop!!!' ); 
 
 $allow_func = array('main'); 
+$submenu['add'] = "Tạo Mới Tour";
+
+$allow_func = array('main', 'add'); 
+
 define( 'NV_IS_BOOKTOUR_ADMIN', true );
 
 ?>
