@@ -20,7 +20,7 @@ $sql_create_module[] = "CREATE TABLE IF NOT EXISTS `" . $db_config['prefix'] . "
   `title` varchar(255) NOT NULL,
   `times` varchar(255) NOT NULL,
   `by` varchar(255) NOT NULL,
-  `price` mediumtext NOT NULL,
+  `price` int(11) NOT NULL DEFAULT '0',
   `img` varchar(255) NOT NULL,
   `imgthumb` varchar(255) NOT NULL,
   `hometext` varchar(255) NOT NULL,

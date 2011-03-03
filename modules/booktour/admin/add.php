@@ -9,29 +9,30 @@
 
 if ( ! defined( 'NV_IS_BOOKTOUR_ADMIN' ) ) die( 'Stop!!!' );
 
-$page_title = $module_info['test content'];
-$page_title = "Thêm Tour Du Lịch";
-
+$page_title = $lang_module['tour_add'];
 
 $contents = "";
 $error = "";
 $data = array();
+
 $data['title'] = filter_text_input( 'title', 'post', '' );
-$data['times'] = filter_text_input( 'times', 'post', '', 1, '' );
-$data['by'] = filter_text_input( 'by', 'post', '', 1, '' );
-$data['price'] = filter_text_input( 'price', 'post', '', 1, '' );
-$data['img'] = filter_text_input( 'img', 'post', '', 1, '' );
+$data['times'] = filter_text_input( 'times', 'post', '' );
+$data['by'] = filter_text_input( 'by', 'post', '' );
+$data['price'] = $nv_Request->get_int( 'price', 'post', 0 );
+$data['img'] = $nv_Request->get_string( 'img', 'post', '' );
+$data['imgthumb'] = $nv_Request->get_string( 'imgthumb', 'post', '' );
 $data['hometext'] = $nv_Request->get_string( 'hometext', 'post', '' );
-$data['bodytext'] = $nv_Request->get_string( 'bodytext', 'post', ''); 
+$data['bodytext'] = $nv_Request->get_string( 'bodytext', 'post', '');
+
 if ( ($nv_Request->get_int( 'add', 'post', 0 ) == 1) )
 {
    if ( $data['title'] == "" )
    {
-      $error = "Bạn chưa nhập tên tour";
+		$error = "Bạn chưa nhập tên tour";
    } 
    elseif ( $data['times'] == "" )
    {
-      $error = "Bạn chưa nhập Thời gian của tour này";
+		$error = "Bạn chưa nhập Thời gian của tour này";
    } 
     elseif ( $data['by'] == "" )
    {
@@ -39,7 +40,7 @@ if ( ($nv_Request->get_int( 'add', 'post', 0 ) == 1) )
    }
     elseif ( $data['price'] == "" )
    {
-      $error = "Bạn chưa giá tour";
+      $error = "Bạn chưa nhập giá tour";
    }
    elseif ( $data['hometext'] == "" )
    {
@@ -50,19 +51,16 @@ if ( ($nv_Request->get_int( 'add', 'post', 0 ) == 1) )
       $error = "Bạn chưa nhập  nội dung";
    }else
    {
-     
       $resuilt = $db->sql_query( $sql );
-      $query = "INSERT INTO `" . NV_PREFIXLANG . "_" . $module_data . "` 
-      (
-         `title`, `times`, `by`, `price`, `img`, `hometext`, `bodytext`
-      ) 
-      VALUES 
+      $query = "INSERT INTO `" . NV_PREFIXLANG . "_" . $module_data . "` VALUES 
       ( 
         NULL, 
         " . $db->dbescape( $data['title'] ) . ",
 		" . $db->dbescape( $data['times'] ) . ",
 		" . $db->dbescape( $data['by'] ) . ",
+		" . $db->dbescape( $data['price'] ) . ",
 		" . $db->dbescape( $data['img'] ) . ",
+		" . $db->dbescape( $data['imgthumb'] ) . ",
 		" . $db->dbescape( $data['hometext'] ) . ",		 
         " . $db->dbescape( $data['bodytext'] ) . "
       )"; 
@@ -83,7 +81,7 @@ if( $error )
 {
    $contents .= "<div class=\"quote\" style=\"width: 780px;\">\n
                <blockquote class=\"error\">
-                  <span style=\"font-size:16px\">".$error."</span>
+                  <span style=\"font-size:16px\">" . $error . "</span>
                </blockquote>
             </div>\n
             <div class=\"clear\">
@@ -157,7 +155,7 @@ $contents .="
             Tóm Tắt
             </td>
             <td>
-               <textarea name=\"hometext\" style=\"width: 635px; height: 114px\"></textarea>
+               <textarea name=\"hometext\" style=\"width: 635px; height: 114px\">" . $data['hometext'] . "</textarea>
             </td>
          </tr>
       </tbody>
@@ -167,7 +165,7 @@ $contents .="
             Nội Dung
             </td>
             <td>
-               <textarea name=\"bodytext\" style=\"width: 635px; height: 114px\"></textarea>
+               <textarea name=\"bodytext\" style=\"width: 635px; height: 114px\">" . $data['bodytext'] . "</textarea>
             </td>
          </tr>
       </tbody>

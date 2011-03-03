@@ -19,8 +19,8 @@ $lang_translator['copyright'] = "@Copyright (C) 2010 VINADES.,JSC. All rights re
 $lang_translator['info'] = "";
 $lang_translator['langtype'] = "lang_module";
 
-$lang_module[''] = "";
-$lang_module[''] = "";
+$lang_module['tour_list'] = "Danh sách các tour";
+$lang_module['tour_add'] = "Thêm một tour";
 $lang_module[''] = "";
 $lang_module[''] = "";
 $lang_module[''] = "";
