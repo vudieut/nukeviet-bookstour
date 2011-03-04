@@ -23,8 +23,8 @@ $sql_create_module[] = "CREATE TABLE IF NOT EXISTS `" . $db_config['prefix'] . "
   `price` int(11) NOT NULL DEFAULT '0',
   `img` varchar(255) NOT NULL,
   `imgthumb` varchar(255) NOT NULL,
-  `hometext` varchar(255) NOT NULL,
-  `bodytext` varchar(255) NOT NULL, 
+  `hometext` mediumtext NOT NULL,
+  `bodytext` mediumtext NOT NULL, 
   UNIQUE KEY `title` (`title`),
   KEY `id` (`id`)
 )ENGINE=MyISAM";

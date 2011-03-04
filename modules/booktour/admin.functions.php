@@ -11,7 +11,7 @@ if ( ! defined( 'NV_ADMIN' ) or ! defined( 'NV_MAINFILE' ) or ! defined( 'NV_IS_
 $allow_func = array('main'); 
 $submenu['add'] = "Tạo Mới Tour";
 
-$allow_func = array('main', 'add'); 
+$allow_func = array('main', 'add', 'edit', 'del'); 
 
 define( 'NV_IS_BOOKTOUR_ADMIN', true );
 
