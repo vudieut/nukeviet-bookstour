@@ -95,14 +95,14 @@ $contents .="
       <thead>
          <tr>
             <td colspan=\"2\">
-               Thông tin Tour
+               ".$lang_module['info']."
             </td>
          </tr>
       </thead>
       <tbody>
          <tr>
             <td style=\"width: 150px;\">
-               Tên Tour
+               ".$lang_module['title']."
             </td>
             <td style=\"background: #eee;\">
                <input name=\"title\" style=\"width: 470px;\" value=\"" . $data['title'] . "\" type=\"text\">
@@ -112,7 +112,7 @@ $contents .="
 	  <tbody>
          <tr>
             <td style=\"width: 150px;\">
-               Thời gian
+               ".$lang_module['times']."
             </td>
             <td style=\"background: #eee;\">
                <input name=\"times\" style=\"width: 470px;\" value=\"" . $data['times'] . "\" type=\"text\">
@@ -122,7 +122,7 @@ $contents .="
 	  <tbody>
          <tr>
             <td style=\"width: 150px;\">
-               Phương Tiện
+               ".$lang_module['by']."
             </td>
             <td style=\"background: #eee;\">
                <input name=\"by\" style=\"width: 470px;\" value=\"" . $data['by'] . "\" type=\"text\">
@@ -132,7 +132,7 @@ $contents .="
 	  <tbody>
          <tr>
             <td style=\"width: 150px;\">
-               Giá Tour
+               ".$lang_module['price']."
             </td>
             <td style=\"background: #eee;\">
                <input name=\"price\" style=\"width: 470px;\" value=\"" . $data['price'] . "\" type=\"text\">
